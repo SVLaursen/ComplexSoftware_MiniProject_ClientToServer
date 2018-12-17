@@ -1,12 +1,13 @@
 #include <iostream>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <sys.types.h>
+#include <sys/types.h>
 #include <sys/sockets.h>
 #include <netinet/in.h>
 
-void error(cont char *msg) {
+void error(const char *msg) {
     perror(msg);
     exit(1);
 }
@@ -18,8 +19,8 @@ int main(int argc, char *argv[])
  char buffer[256];
  struct sockaddr_in serv_addr, cli_addr;
  int n;
- if (argc<2){
-     fprintf(stderr, "ERROR< no port provided!\n");
+ if (argc < 2){
+     fprintf(stderr, "ERROR, no port provided!\n");
      exit(1);
  }
  //creates a socket
@@ -29,8 +30,8 @@ int main(int argc, char *argv[])
      error("ERROR opening socket");
 
 
-//clear address structyure
-bzero((char *) &serv;_addr , sizeof(serv_addr));
+//clear address structure
+bzero((char *) &serv_addr , sizeof(serv_addr));
 
 portno = atoi(argv[1]);
 
@@ -48,9 +49,9 @@ serv_addr.ain_port = htons(portno);
 //and the length of the address structure
 
 //This bind() call will bind the socket to the current IP address on port, portno
-if (bind(sockfd, (struct sockaddr *) &serv;_addr,
+if (bind(sockfd, (struct sockaddr *) &serv_addr,
         sizeof(serv_addr)) < 0)
-    error("ERROR on binding!");
+        error("ERROR on binding!");
 
 //This listen() call tells the socket to listen to the incoming connections.
 //The listen() function places all incoming connection into a backlog queue
