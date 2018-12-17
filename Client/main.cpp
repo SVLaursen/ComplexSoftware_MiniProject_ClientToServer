@@ -1,6 +1,7 @@
-#include <iostream>
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
+//Client side
+int main(int argc, char *argv[])
+{
+
     return 0;
 }
