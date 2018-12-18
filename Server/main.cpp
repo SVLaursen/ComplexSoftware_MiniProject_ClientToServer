@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
     //Initialize winsock
     WSADATA wsData;
-    WORD ver = MAKEWORD(, 2);
+    WORD ver = MAKEWORD(2, 2);
 
     int wsOk = WSAStartup( ver, &wsData);
     if (wsOk!= 0)
@@ -37,61 +37,117 @@ int main(int argc, char *argv[])
     //Tell winsock the socket is for listening
     listen(listening, SOMAXCONN);
 
-    //Wait for a connection
+	fd_set master;
+	FD_ZERO(&master);
 
-    sockaddr_in client;
-    int clientSize = sizeof(client);
+	FD_SET(listening, &master);
 
-    SOCKET clientSocket = accept(listening, (sockaddr*) &client, &clientSize);
+	while (true)
+	{
+		fd_set copy = master;
 
-    char host[NI_MAXHOST];  //client's remote name
-    char service[NI_MAXHOST];//Servie (i.e. port) the client is connected on
+		int socketCount = select(0, &copy, nullptr, nullptr, nullptr);
 
-    ZeroMemory(host, NI_MAXHOST);
-    ZeroMemory(service, NI_MAXHOST);
+		for (int i = 0; i < socketCount; i++)
+		{
+			SOCKET sock = copy.fd_array[i];
+			if (sock == listening)
+			{
+				// Accept a new connection
+				SOCKET client = accept(listening, nullptr, nullptr);
 
-    if(getnameinfo(sockaddr*)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV, 0) == 0);
-    {
-        cout<<host<< " connected on port " <<service << endl;
-    }
-    else
-    {
-        inet_ntop(AF_INET, &client.sin_addr, host, NI_MAXHOST);
-        cout<< host << " connected on port " <<
-            ntohs(client.sin_port) << endl;
-    }
+				// Add the new connection to the list of connected clients
+				FD_SET(client, &master);
 
+				// Send a welcome message to the connected client 
+				string welcomeMsg = "Welcome to the Chat Server!";
+				send(client, welcomeMsg.c_str(), welcomeMsg.size() + 1, 0);
+			}
+			else
+			{
+				char buf[4096];
+				ZeroMemory(buf, 4096);
 
-    //Close listening socket
-    closesocket(listening);
+				// Recieve message
+				int bytesIn = recv(sock, buf, 4096, 0);
+				if (bytesIn <= 0)
+				{
+					// Drop the client
+					closesocket(sock);
+					FD_CLR(sock, &master);
+				}
+				else
+				{
+					// Send message to the other clients
+					for (int i = 0; i < master.fd_count; i++)
+					{
+						SOCKET outSock = master.fd_array[i];
+						if (outSock != listening && outSock != sock)
+						{
+							send(outSock, buf, bytesIn, 0);
+						}
+					}
+				}
+				
+			}
+		}
+	}
 
-    //While loop: accept and echo message back to client
-    char buf[4096];
-
-    while (true)
-    {
-        ZeroMemory(buf, 4096);
-
-        //Wait for client to send data
-        int bytesReceived = recv(clientSocket, buf, 4096, 0 );
-        if(bytesReceived == SOCKET_ERROR)
-        {
-            cerr << "Error in recv(). Quitting" << endl;
-            break;
-        }
-
-        if (bytesReceived == 0)
-        {
-            cout << "Client disconnected " <<endl;
-            break;
-        }
-        //Echo message back to client
-        send(clientSocket, buf, bytesReceived + 1, 0);
-    }
-    //Close the socket
-    closesocket(clientSocket);
 
     //Clean up winsock
     WSACleanup();
     return 0;
 }
+
+
+////wait for a connection
+//
+//sockaddr_in client;
+//int clientsize = sizeof(client);
+//
+//socket clientsocket = accept(listening, (sockaddr*)&client, &clientsize);
+//
+//char host[ni_maxhost];  //client's remote name
+//char service[ni_maxhost];//servie (i.e. port) the client is connected on
+//
+//zeromemory(host, ni_maxhost);
+//zeromemory(service, ni_maxhost);
+//
+//if (getnameinfo((sockaddr*)&client, sizeof(client), host, ni_maxhost, service, ni_maxserv, 0) == 0)
+//{
+//	cout << host << " connected on port " << service << endl;
+//}
+//else
+//{
+//	inet_ntop(af_inet, &client.sin_addr, host, ni_maxhost);
+//	cout << host << " connected on port " <<
+//		ntohs(client.sin_port) << endl;
+//}
+//
+//
+////close listening socket
+//closesocket(listening);
+//
+////while loop: accept and echo message back to client
+//char buf[4096];
+//
+//while (true)
+//{
+//	zeromemory(buf, 4096);
+//
+//	//wait for client to send data
+//	int bytesreceived = recv(clientsocket, buf, 4096, 0);
+//	if (bytesreceived == socket_error)
+//	{
+//		cerr << "error in recv(). quitting" << endl;
+//		break;
+//	}
+//
+//	if (bytesreceived == 0)
+//	{
+//		cout << "client disconnected " << endl;
+//		break;
+//	}
+//	//echo message back to client
+//	send(clientsocket, buf, bytesreceived + 1, 0);
+//}
