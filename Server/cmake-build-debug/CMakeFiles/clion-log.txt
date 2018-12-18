@@ -1,18 +1,114 @@
-"C:\Program Files\JetBrains\CLion 2018.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" "C:\Users\nolan\Desktop\AAU\3rd Semester\Programming for Complex Systems\Mini_Project\ComplexSoftware_MiniProject_ClientToServer\Server"
--- The C compiler identification is MSVC 19.15.26732.1
--- The CXX compiler identification is MSVC 19.15.26732.1
--- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Tools/MSVC/14.15.26726/bin/Hostx86/x86/cl.exe
--- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Tools/MSVC/14.15.26726/bin/Hostx86/x86/cl.exe -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Tools/MSVC/14.15.26726/bin/Hostx86/x86/cl.exe
--- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Tools/MSVC/14.15.26726/bin/Hostx86/x86/cl.exe -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - failed
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/nolan/Desktop/AAU/3rd Semester/Programming for Complex Systems/Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug
+"C:\Program Files\JetBrains\CLion 2018.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "C:\Users\emilv\Documents\University - Medialogy\Medialogy 3. semester\Programming of Complex Software Systems\Chat_System_Mini_Project\ComplexSoftware_MiniProject_ClientToServer\Server"
+-- The C compiler identification is GNU 6.3.0
+CMake Error at C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCompilerId.cmake:517 (file):
+  file STRINGS file "C:/Users/emilv/Documents/University -
+  Medialogy/Medialogy 3.  semester/Programming of Complex Software
+  Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdCXX/a.exe"
+  cannot be read.
+Call Stack (most recent call first):
+  C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCompilerId.cmake:37 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCXXCompiler.cmake:107 (CMAKE_DETERMINE_COMPILER_ID)
+  CMakeLists.txt:2 (project)
+
+
+CMake Error at C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCompilerId.cmake:523 (list):
+  list sub-command REMOVE_DUPLICATES requires list to be present.
+Call Stack (most recent call first):
+  C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCompilerId.cmake:37 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCXXCompiler.cmake:107 (CMAKE_DETERMINE_COMPILER_ID)
+  CMakeLists.txt:2 (project)
+
+
+CMake Error at C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCompilerId.cmake:589 (file):
+  file failed to open for reading (Invalid argument):
+
+    C:/Users/emilv/Documents/University - Medialogy/Medialogy 3. semester/Programming of Complex Software Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdCXX/a.exe
+Call Stack (most recent call first):
+  C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCompilerId.cmake:37 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCXXCompiler.cmake:107 (CMAKE_DETERMINE_COMPILER_ID)
+  CMakeLists.txt:2 (project)
+
+
+CMake Error at C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCompilerId.cmake:591 (string):
+  string begin index: 1 is out of range 0 - 0
+Call Stack (most recent call first):
+  C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCompilerId.cmake:37 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCXXCompiler.cmake:107 (CMAKE_DETERMINE_COMPILER_ID)
+  CMakeLists.txt:2 (project)
+
+
+CMake Error at C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCompilerId.cmake:599 (math):
+  math cannot parse the expression: " * 16 + ": syntax error, unexpected
+  exp_TIMES, expecting exp_PLUS or exp_MINUS or exp_OPENPARENT or exp_NUMBER
+  (2)
+Call Stack (most recent call first):
+  C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCompilerId.cmake:37 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCXXCompiler.cmake:107 (CMAKE_DETERMINE_COMPILER_ID)
+  CMakeLists.txt:2 (project)
+
+
+CMake Error at C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCompilerId.cmake:601 (file):
+  file failed to open for reading (Invalid argument):
+
+    C:/Users/emilv/Documents/University - Medialogy/Medialogy 3. semester/Programming of Complex Software Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdCXX/a.exe
+Call Stack (most recent call first):
+  C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCompilerId.cmake:37 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeDetermineCXXCompiler.cmake:107 (CMAKE_DETERMINE_COMPILER_ID)
+  CMakeLists.txt:2 (project)
+
+
+-- The CXX compiler identification is GNU 6.3.0
+-- Check for working C compiler: C:/MinGW/bin/gcc.exe
+CMake Warning in C:/Users/emilv/Documents/University - Medialogy/Medialogy 3. semester/Programming of Complex Software Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeLists.txt:
+  The object file directory
+
+    C:/Users/emilv/Documents/University - Medialogy/Medialogy 3. semester/Programming of Complex Software Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_7b5df.dir/
+
+  has 249 characters.  The maximum full path to an object file is 250
+  characters (see CMAKE_OBJECT_PATH_MAX).  Object file
+
+    testCCompiler.c.obj
+
+  cannot be safely placed under this directory.  The build may not work
+  correctly.
+
+
+-- Check for working C compiler: C:/MinGW/bin/gcc.exe -- broken
+CMake Error at C:/Program Files/JetBrains/CLion 2018.3/bin/cmake/win/share/cmake-3.12/Modules/CMakeTestCCompiler.cmake:52 (message):
+  The C compiler
+
+    "C:/MinGW/bin/gcc.exe"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: C:/Users/emilv/Documents/University - Medialogy/Medialogy 3. semester/Programming of Complex Software Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/CMakeTmp
+    
+    Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_7b5df/fast"
+    C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_7b5df.dir\build.make CMakeFiles/cmTC_7b5df.dir/build
+    mingw32-make.exe[1]: Entering directory 'C:/Users/emilv/Documents/University - Medialogy/Medialogy 3. semester/Programming of Complex Software Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/CMakeTmp'
+    CMakeFiles\cmTC_7b5df.dir\build.make:54: CMakeFiles/cmTC_7b5df.dir/depend.make: No such file or directory
+    CMakeFiles\cmTC_7b5df.dir\build.make:57: CMakeFiles/cmTC_7b5df.dir/progress.make: No such file or directory
+    mingw32-make.exe[1]: Leaving directory 'C:/Users/emilv/Documents/University - Medialogy/Medialogy 3. semester/Programming of Complex Software Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/CMakeTmp'
+    mingw32-make.exe[1]: *** No rule to make target 'CMakeFiles/cmTC_7b5df.dir/progress.make'.  Stop.
+    Makefile:120: recipe for target 'cmTC_7b5df/fast' failed
+    mingw32-make.exe: *** [cmTC_7b5df/fast] Error 2
+    
+
+  
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:2 (project)
+
+
+-- Configuring incomplete, errors occurred!
+See also "C:/Users/emilv/Documents/University - Medialogy/Medialogy 3. semester/Programming of Complex Software Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "C:/Users/emilv/Documents/University - Medialogy/Medialogy 3. semester/Programming of Complex Software Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/CMakeError.log".
+
+CMake Error:
+  --------------------------------------------------------------------------------------------
+  Antivirus software might have incorrectly identified files generated by CMake as malicious.
+  To workaround this problem, please exclude the project dir and 'C:\MinGW' from the scanning.
+  --------------------------------------------------------------------------------------------

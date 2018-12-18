@@ -1,19 +1,16 @@
-Detecting CXX compiler ABI info failed to compile with the following output:
-Change Dir: C:/Users/nolan/Desktop/AAU/3rd Semester/Programming for Complex Systems/Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/CMakeTmp
+The CXX compiler identification could not be found in "C:/Users/emilv/Documents/University - Medialogy/Medialogy 3. semester/Programming of Complex Software Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdCXX/a.exe"
 
-Run Build Command:"nmake" "/nologo" "cmTC_3457a\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Tools\MSVC\14.15.26726\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_3457a.dir\build.make /nologo -L                  CMakeFiles\cmTC_3457a.dir\build
-Building CXX object CMakeFiles/cmTC_3457a.dir/CMakeCXXCompilerABI.cpp.obj
-	C:\PROGRA~2\MICROS~2\2017\Professional\VC\Tools\MSVC\14.15.26726\bin\Hostx86\x86\cl.exe @C:\Users\nolan\AppData\Local\Temp\nm73B7.tmp
-CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_3457a.exe
-	"C:\Program Files\JetBrains\CLion 2018.3\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_3457a.dir --manifests  -- C:\PROGRA~2\MICROS~2\2017\Professional\VC\Tools\MSVC\14.15.26726\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_3457a.dir\objects1.rsp @C:\Users\nolan\AppData\Local\Temp\nm7454.tmp
-FINAL LINK: command "C:\PROGRA~2\MICROS~2\2017\Professional\VC\Tools\MSVC\14.15.26726\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_3457a.dir\objects1.rsp /out:cmTC_3457a.exe /implib:cmTC_3457a.lib /pdb:C:\Users\nolan\Desktop\AAU\3rd Semester\Programming for Complex Systems\Mini_Project\ComplexSoftware_MiniProject_ClientToServer\Server\cmake-build-debug\CMakeFiles\CMakeTmp\cmTC_3457a.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\cmTC_3457a.dir/intermediate.manifest CMakeFiles\cmTC_3457a.dir/manifest.res" failed (exit code 1104) with the following output:
-LINK : fatal error LNK1104: cannot open file 'CMakeFiles\cmTC_3457a.dir/intermediate.manifest'
-NMAKE : fatal error U1077: '"C:\Program Files\JetBrains\CLion 2018.3\bin\cmake\win\bin\cmake.exe"' : return code '0xffffffff'
-Stop.
-NMAKE : fatal error U1077: '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Tools\MSVC\14.15.26726\bin\HostX86\x86\nmake.exe"' : return code '0x2'
-Stop.
+Determining if the C compiler works failed with the following output:
+Change Dir: C:/Users/emilv/Documents/University - Medialogy/Medialogy 3. semester/Programming of Complex Software Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/CMakeTmp
 
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_7b5df/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_7b5df.dir\build.make CMakeFiles/cmTC_7b5df.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/emilv/Documents/University - Medialogy/Medialogy 3. semester/Programming of Complex Software Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/CMakeTmp'
+CMakeFiles\cmTC_7b5df.dir\build.make:54: CMakeFiles/cmTC_7b5df.dir/depend.make: No such file or directory
+CMakeFiles\cmTC_7b5df.dir\build.make:57: CMakeFiles/cmTC_7b5df.dir/progress.make: No such file or directory
+mingw32-make.exe[1]: Leaving directory 'C:/Users/emilv/Documents/University - Medialogy/Medialogy 3. semester/Programming of Complex Software Systems/Chat_System_Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make.exe[1]: *** No rule to make target 'CMakeFiles/cmTC_7b5df.dir/progress.make'.  Stop.
+Makefile:120: recipe for target 'cmTC_7b5df/fast' failed
+mingw32-make.exe: *** [cmTC_7b5df/fast] Error 2
 
 
