@@ -1,8 +1,8 @@
-# Install script for directory: /Users/simonlaursen/Dropbox/AAU/3Semester/Programming of Complex Software Systems/ComplexSoftware_MiniProject_ClientToServer/Server
+# Install script for directory: C:/Users/nolan/Desktop/AAU/3rd Semester/Programming for Complex Systems/Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/usr/local")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Server")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/simonlaursen/Dropbox/AAU/3Semester/Programming of Complex Software Systems/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/nolan/Desktop/AAU/3rd Semester/Programming for Complex Systems/Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

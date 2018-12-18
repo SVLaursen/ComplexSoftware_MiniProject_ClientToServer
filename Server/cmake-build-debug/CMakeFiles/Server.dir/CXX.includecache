@@ -6,37 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/simonlaursen/Dropbox/AAU/3Semester/Programming of Complex Software Systems/ComplexSoftware_MiniProject_ClientToServer/Server/main.cpp
+C:/Users/nolan/Desktop/AAU/3rd Semester/Programming for Complex Systems/Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/main.cpp
 iostream
 -
-string
--
-stdio.h
--
-sys/types.h
--
-sys/socket.h
--
-netinet/in.h
--
-arpa/inet.h
--
-stdlib.h
--
-unistd.h
--
-string.h
--
-netdb.h
--
-sys/uio.h
--
-sys/time.h
--
-sys/wait.h
--
-fcntl.h
--
-fstream
+WS2tcpip.h
 -
 

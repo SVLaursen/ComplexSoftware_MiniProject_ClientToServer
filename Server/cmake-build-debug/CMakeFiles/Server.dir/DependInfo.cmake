@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/simonlaursen/Dropbox/AAU/3Semester/Programming of Complex Software Systems/ComplexSoftware_MiniProject_ClientToServer/Server/main.cpp" "/Users/simonlaursen/Dropbox/AAU/3Semester/Programming of Complex Software Systems/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/Server.dir/main.cpp.o"
+  "C:/Users/nolan/Desktop/AAU/3rd Semester/Programming for Complex Systems/Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/main.cpp" "C:/Users/nolan/Desktop/AAU/3rd Semester/Programming for Complex Systems/Mini_Project/ComplexSoftware_MiniProject_ClientToServer/Server/cmake-build-debug/CMakeFiles/Server.dir/main.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "AppleClang")
+set(CMAKE_CXX_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
