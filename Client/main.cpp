@@ -3,22 +3,14 @@
 #include <WS2tcpip.h>
 #pragma comment(lib, "ws2_32.lib")
 
+std::string ipAddress;
+std::string port;
+std::string username;
 
 int main(int argc, char *argv[])
 {
-    // IP Address of the server
-    std::cout << "Please input the server's IP address\n";
-    std::cout << ">";
-    std::string ipAddress;
-    std::cin >> ipAddress;
-
-    // Listening port # on the server
-    std::cout << "Please input the port #\n";
-    std::cout << ">";
-    std::string textToNum;
-    std::cin >> textToNum;
-    int port = std::stoi( textToNum );
     
+	setupUser();
 
     // Initialize WinSock
     WSAData data;
@@ -93,4 +85,30 @@ int main(int argc, char *argv[])
     closesocket(sock);
     WSACleanup();
     return 0;
+}
+
+void setupUser() 
+{
+	// IP Address of the server
+	std::cout << "Please input the server's IP address\n";
+	std::cout << ">";
+	//std::string ipAddress;
+	std::cin >> ipAddress;
+
+	// Listening port # on the server
+	std::cout << "Please input the port #\n";
+	std::cout << ">";
+	std::string textToNum;
+	std::cin >> textToNum;
+	port = std::stoi(textToNum);
+
+	//Set username
+	std::cout << "Please enter your username\n";
+	std::cout << ">";
+	std::cin >> username;
+}
+
+public:
+	std::string getName() {
+	return userName;
 }
