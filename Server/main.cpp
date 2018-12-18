@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void main()
+int main(int argc, char *argv[])
 {
     //Initialize winsock
     WSADATA wsData;
@@ -15,7 +15,7 @@ void main()
     if (wsOk!= 0)
     {
         cerr << "Can't initialize winsock! Quitting" <<endl;
-        return;
+        return 0;
     }
 
     //Create a socket
@@ -23,7 +23,7 @@ void main()
     if(listening == INVALID_SOCKET)
     {
         cerr << "Can't create a socket! Quitting" <<endl;
-        return;
+        return 0;
     }
 
     //bind the socket to an ip address and port to a socket
@@ -93,10 +93,5 @@ void main()
 
     //Clean up winsock
     WSACleanup();
-}
-
-//Server side
-int main(int argc, char *argv[])
-{
     return 0;
 }
