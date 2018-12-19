@@ -13,19 +13,19 @@ void setupUser()
 	std::cout << "Please input the server's IP address\n";
 	std::cout << ">";
 	//std::string ipAddress;
-	std::cin >> ipAddress;
+	getline(std::cin, ipAddress);
 
 	// Listening port # on the server
 	std::cout << "Please input the port #\n";
 	std::cout << ">";
 	std::string textToNum;
-	std::cin >> textToNum;
+	getline(std::cin, textToNum);
 	port = std::stoi(textToNum);
 
 	//Set username
 	std::cout << "Please enter your username\n";
 	std::cout << ">";
-	std::cin >> username;
+	getline(std::cin, username);
 }
 
 int main(int argc, char *argv[])
@@ -73,6 +73,16 @@ int main(int argc, char *argv[])
     // Do-while loop to send and receive data
     char buf[4096];
     std::string userInput;
+
+	// Recieve welcome message from server
+	ZeroMemory(buf, 4096);
+	int bytesReceived = recv(sock, buf, 4096, 0);
+
+	if (bytesReceived > 0)
+	{
+		// Echo response to console
+		std::cout << "SERVER> " << std::string(buf, 0, bytesReceived) << std::endl;
+	}
 
     do
     {
