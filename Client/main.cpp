@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
                 if (bytesReceived > 0)
                 {
                     // Echo response to console
-                    std::cout << "SERVER> " << std::string(buf, 0, bytesReceived) << std::endl;
+                    std::cout << std::string(buf, 0, bytesReceived) << std::endl;
                 }
             }
         }
