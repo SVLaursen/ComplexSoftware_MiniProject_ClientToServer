@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 	FD_SET(listening, &master);
 
 	//Set up vector for connection usernames (index zero is the server)
-	vector<string> username = { "Server" };
+	vector<string> username = { "SERVER" };
 
 	while (true)
 	{
