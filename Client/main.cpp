@@ -70,6 +70,10 @@ int main(int argc, char *argv[])
         return 0;
     }
 
+
+	// Send username to server
+	send(sock, username.c_str(), username.size() + 1, 0);
+
     // Do-while loop to send and receive data
     char buf[4096];
     std::string userInput;

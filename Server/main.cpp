@@ -1,5 +1,7 @@
+#include <string>
 #include <iostream>
 #include <WS2tcpip.h>
+#include <vector>
 
 #pragma comment (lib, "ws2_32.lib")
 
@@ -7,40 +9,43 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    //Initialize winsock
-    WSADATA wsData;
-    WORD ver = MAKEWORD(2, 2);
+	//Initialize winsock
+	WSADATA wsData;
+	WORD ver = MAKEWORD(2, 2);
 
-    int wsOk = WSAStartup( ver, &wsData);
-    if (wsOk!= 0)
-    {
-        cerr << "Can't initialize winsock! Quitting" <<endl;
-        return 0;
-    }
+	int wsOk = WSAStartup(ver, &wsData);
+	if (wsOk != 0)
+	{
+		cerr << "Can't initialize winsock! Quitting" << endl;
+		return 0;
+	}
 
-    //Create a socket
-    SOCKET listening = socket(AF_INET, SOCK_STREAM, 0);
-    if(listening == INVALID_SOCKET)
-    {
-        cerr << "Can't create a socket! Quitting" <<endl;
-        return 0;
-    }
+	//Create a socket
+	SOCKET listening = socket(AF_INET, SOCK_STREAM, 0);
+	if (listening == INVALID_SOCKET)
+	{
+		cerr << "Can't create a socket! Quitting" << endl;
+		return 0;
+	}
 
-    //bind the socket to an ip address and port to a socket
-    sockaddr_in hint;
-    hint.sin_family = AF_INET;
-    hint.sin_port = htons(54000);
-    hint.sin_addr.S_un.S_addr = INADDR_ANY;
+	//bind the socket to an ip address and port to a socket
+	sockaddr_in hint;
+	hint.sin_family = AF_INET;
+	hint.sin_port = htons(54000);
+	hint.sin_addr.S_un.S_addr = INADDR_ANY;
 
-    bind(listening, (sockaddr*)&hint, sizeof(hint));
+	bind(listening, (sockaddr*)&hint, sizeof(hint));
 
-    //Tell winsock the socket is for listening
-    listen(listening, SOMAXCONN);
+	//Tell winsock the socket is for listening
+	listen(listening, SOMAXCONN);
 
 	fd_set master;
 	FD_ZERO(&master);
 
 	FD_SET(listening, &master);
+
+	//Set up vector for connection usernames (index zero is the server)
+	vector<string> username = { "Server" };
 
 	while (true)
 	{
@@ -59,22 +64,59 @@ int main(int argc, char *argv[])
 				// Add the new connection to the list of connected clients
 				FD_SET(client, &master);
 
+				// Receive and store username
+				do
+				{ 
+					char buf[4096];
+					ZeroMemory(buf, 4096);
+					int bytesIn = recv(client, buf, 4096, 0);
+					if(bytesIn > 0)
+					{ 
+						string name(buf);
+						username.push_back(name);
+
+						// Print to console that user has connected
+						cout << "'" << name << "' has connected." << endl;
+						break;
+					}
+				} while (true);
+
 				// Send a welcome message to the connected client 
-				string welcomeMsg = "Welcome to the Chat Server!";
+				string welcomeMsg = "Welcome to the Chat Server, " + username.back() + "!";
 				send(client, welcomeMsg.c_str(), welcomeMsg.size() + 1, 0);
 			}
 			else
 			{
+				// Find index of socket
+				int socketIndex = 0;
+				for (int i = 0; i < master.fd_count; i++)
+				{
+					SOCKET s = master.fd_array[i];
+					if (s == sock)
+					{
+						socketIndex = i;
+						break;
+					}
+				}
+
 				char buf[4096];
 				ZeroMemory(buf, 4096);
 
-				// Recieve message
+				// Receive message
 				int bytesIn = recv(sock, buf, 4096, 0);
+
 				if (bytesIn <= 0)
 				{
 					// Drop the client
 					closesocket(sock);
 					FD_CLR(sock, &master);
+
+					// Print to console that user has disconnected
+					cout << "'" << username[socketIndex] << "' has disconnected." << endl;
+
+					// Remove username from list
+					username.erase(username.begin() + socketIndex);
+
 				}
 				else
 				{
@@ -88,15 +130,14 @@ int main(int argc, char *argv[])
 						}
 					}
 				}
-				
 			}
 		}
 	}
 
 
-    //Clean up winsock
-    WSACleanup();
-    return 0;
+	//Clean up winsock
+	WSACleanup();
+	return 0;
 }
 
 
