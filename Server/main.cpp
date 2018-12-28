@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 	map<string, int> commandMap;
 	commandMap["/disconnect"] = 0;
 	commandMap["/afk"] = 1;
-	commandMap["/refresh"] = 2;
+	commandMap["/back"] = 2;
 	bool isRefreshing = false;
 
 	//Initialize winsock
@@ -73,12 +73,12 @@ int main(int argc, char *argv[])
 
 				// Receive and store username
 				do
-				{ 
+				{
 					char buf[4096];
 					ZeroMemory(buf, 4096);
 					int bytesIn = recv(client, buf, 4096, 0);
-					if(bytesIn > 0)
-					{ 
+					if (bytesIn > 0)
+					{
 						string name(buf);
 						username.push_back(name);
 
@@ -114,33 +114,47 @@ int main(int argc, char *argv[])
 
 				//Check if received message is a command
 				if (buf[0] == '/') {
-					switch (commandMap[buf]) {
-					case 0: //Disconnect
+					if (commandMap[buf] == 0) { //Disconnect
 						// Drop the client
 						closesocket(sock);
 						FD_CLR(sock, &master);
 
 						// Print to console that user has disconnected
-						cout << "'" << username[socketIndex] << "' has disconnected." << endl;
+						cout << "'" << username[socketIndex] << "' has disconnected. \n" << endl;
 
 						// Remove username from list
 						username.erase(username.begin() + socketIndex);
-
-						break;
-					case 1: //Afk
-						//Print to console that user is away from keyboard
-						cout << "'" << username[socketIndex] << "' is Away From Keyboard (AFK)";
-						break;
-					case 2: 
-						isRefreshing = true;
-						break;
-					default:
-						string message = "Not a Command";
-						send(sock, buf, message.length(), 0);
-						break;
+					}
+					else if (commandMap[buf] == 1) { //Afk
+						//Print to console and send a message to connected clients that user is away from keyboard
+						string msg = "'" + username[socketIndex] + "' is Away From Keyboard (AFK)\n";
+						cout << msg;
+						// Send message to the other clients
+						for (int i = 0; i < master.fd_count; i++)
+						{
+							SOCKET outSock = master.fd_array[i];
+							if (outSock != listening && outSock != sock)
+							{
+								send(outSock, buf, msg.length(), 0);
+							}
+						}
+					}
+					else if (commandMap[buf] == 2) { //Back
+						//Print to console and send a message to connected clients that user has returned
+						string msg = "'" + username[socketIndex] + "' has returned \n";
+						cout << msg;
+						// Send message to the other clients
+						for (int i = 0; i < master.fd_count; i++)
+						{
+							SOCKET outSock = master.fd_array[i];
+							if (outSock != listening && outSock != sock)
+							{
+								send(outSock, buf, msg.length(), 0);
+							}
+						}
 					}
 				}
-				if (bytesIn <= 0)
+				else if (bytesIn <= 0)
 				{
 					// Drop the client
 					closesocket(sock);
@@ -155,9 +169,6 @@ int main(int argc, char *argv[])
 				}
 				else
 				{
-					if (isRefreshing) {
-						continue;
-					}
 					//Prepend username to message
 					string message = username[socketIndex] + "> " + buf;
 					strncpy(buf, message.c_str(), 4096);

@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
 #include <WS2tcpip.h>
+#include <map>
 #pragma comment(lib, "ws2_32.lib")
 
+using namespace std;
 std::string ipAddress;
 int port;
 std::string username;
@@ -31,6 +33,8 @@ void setupUser()
 int main(int argc, char *argv[])
 {
 	setupUser();
+	map<std::string, int> commandMap;
+	commandMap["/refresh"] = 0;
 
     // Initialize WinSock
     WSAData data;
@@ -96,6 +100,9 @@ int main(int argc, char *argv[])
 
         if (userInput.size() > 0)		// Make sure the user has typed in something
         {
+			if (userInput == "/refresh") {
+				userInput = " Just refreshed the chat window!";
+			}
             // Send the text
             int sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
 
@@ -104,7 +111,6 @@ int main(int argc, char *argv[])
                 // Wait for response
                 ZeroMemory(buf, 4096);
                 int bytesReceived = recv(sock, buf, 4096, 0);
-
                 if (bytesReceived > 0)
                 {
                     // Echo response to console
