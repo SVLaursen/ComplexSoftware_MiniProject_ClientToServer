@@ -2,13 +2,20 @@
 #include <iostream>
 #include <WS2tcpip.h>
 #include <vector>
+#include <map>
 
 #pragma comment (lib, "ws2_32.lib")
 
 using namespace std;
 
 int main(int argc, char *argv[])
-{
+{	//Initialize commandMap
+	map<string, int> commandMap;
+	commandMap["/disconnect"] = 0;
+	commandMap["/afk"] = 1;
+	commandMap["/refresh"] = 2;
+	bool isRefreshing = false;
+
 	//Initialize winsock
 	WSADATA wsData;
 	WORD ver = MAKEWORD(2, 2);
@@ -105,6 +112,34 @@ int main(int argc, char *argv[])
 				// Receive message
 				int bytesIn = recv(sock, buf, 4096, 0);
 
+				//Check if received message is a command
+				if (buf[0] == '/') {
+					switch (commandMap[buf]) {
+					case 0: //Disconnect
+						// Drop the client
+						closesocket(sock);
+						FD_CLR(sock, &master);
+
+						// Print to console that user has disconnected
+						cout << "'" << username[socketIndex] << "' has disconnected." << endl;
+
+						// Remove username from list
+						username.erase(username.begin() + socketIndex);
+
+						break;
+					case 1: //Afk
+						//Print to console that user is away from keyboard
+						cout << "'" << username[socketIndex] << "' is Away From Keyboard (AFK)";
+						break;
+					case 2: 
+						isRefreshing = true;
+						break;
+					default:
+						string message = "Not a Command";
+						send(sock, buf, message.length(), 0);
+						break;
+					}
+				}
 				if (bytesIn <= 0)
 				{
 					// Drop the client
@@ -120,6 +155,9 @@ int main(int argc, char *argv[])
 				}
 				else
 				{
+					if (isRefreshing) {
+						continue;
+					}
 					//Prepend username to message
 					string message = username[socketIndex] + "> " + buf;
 					strncpy(buf, message.c_str(), 4096);
@@ -137,12 +175,11 @@ int main(int argc, char *argv[])
 			}
 		}
 	}
-
-
 	//Clean up winsock
 	WSACleanup();
 	return 0;
 }
+
 
 
 ////wait for a connection
