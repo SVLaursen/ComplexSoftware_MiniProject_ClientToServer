@@ -14,6 +14,8 @@ For information pertaining to the different elements created by the group member
 ## Setting Up & Running The Software
 If you want to run the client and/or the server program you got two options. You can either choose to use one of the pre-build applications found within the releases folder, or build the software yourself from the source code. 
 
+To acquire this software you can either download the source code from this page on GitHub, or go to the release section of this repository and download the 'Build.zip' folder, which contains the an .exe file for both the client and the server software.
+
 #### WARNING: THIS APPLICATION IS ONLY USABLE ON THE WINDOWS OPERATING SYSTEM!
 
 ##### If you choose to use the pre-build executables, follow these steps:
