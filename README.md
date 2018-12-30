@@ -1,6 +1,12 @@
 # ComplexSoftware_MiniProject_ClientToServer
 Mini Project made for the AAU Medialogy course "Programming of Complex Software Systems"
 
+For information pertaining to the different elements created by the group members for this project, please take a look at the wiki section in this repository.
 
-(The report on this project will appear in this document later on)
-(Remember that everyone gets a part of the project, DO NOT WORK MORE ON THE PROJECT THAN ASSIGNED TO YOU!)
+Members:
+- Emil Valberg-Madsen
+- Nolan Rux
+- Daniel Aalykke
+- Stefan Nordborg Eriksen
+- Mathias Sebastian Johansen
+- Simon Vestergaard Laursen
