@@ -38,3 +38,4 @@ If you want to run the client and/or the server program you got two options. You
 - Once the client is running, enter the local network's IP-address, followed by the port number: 54000, and your username
 - If you wish to connect multiple clients, simply repeat step 9-10 in a new Command Prompt window
 
+### IMPORTANT! If you want multiple clients connected to the server, make sure that the first client has send a message prior to the second client connects.
